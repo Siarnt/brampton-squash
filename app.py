@@ -41,7 +41,8 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'#insert name of the db here
 else:
     app.debug = False
-    #app.config['SQLALCHEMY_DATABASE_URI'] = ''
+    data_base_url = os.getenv("database_link")
+    app.config['SQLALCHEMY_DATABASE_URI'] = data_base_url
 
 
 the_secret_key = os.getenv("secret_key")
