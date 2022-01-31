@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title }} {% endblock %}
+{% block content %}
+
+<form action="/create_admin" method="POST">
+    <h2> Create Admin</h2>
+    <div class="login-form">
+        <label for="name">Name</label>
+
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Username">
+        <br>
+    </div>
+
+    <div class="login-form">
+        <label for="password">Password</label>
+
+        <input type="password" class="form-control" id="password" name="password1" placeholder="Enter Password">
+        <br>
+    </div>
+    <div class="login-form">
+        <label for="password">Confirm Password</label>
+
+        <input type="password" class="form-control" id="password" name="password2" placeholder="Confirm Password">
+        <br>
+    </div>
+    <div class="login-form">
+        <label for="password">Secret Code</label>
+
+        <input type="password" class="form-control" id="password" name="secret_code" placeholder="Secret Code">
+        <br>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Admin</button>
+</form>
+{% endblock %}

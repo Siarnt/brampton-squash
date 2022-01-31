@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block content %}
+<h2>Update News</h2>
+<form action="/update-announcement/{{ a.id }}" method="POST">
+<div class="update-form">
+    <h5>Announcement</h5>
+<input class="form-control" type="text" name="update_announcement" id="update_announcement" value="{{ a.announcement_item }}">
+<br>
+<h5>Date Created</h5>
+<input class="form-control" type="text" name="update_date" id="update_date" value="{{ a.date_created }}">
+<br>
+<h5>Announcement Rank</h5>
+<input class="form-control" type="text" name="update_rank" id="update_rank" value="{{ a.rank }}">
+
+<input class="update-form-submit" type="submit" value="Update">
+</div>
+</form>
+
+<br>
+<h4>Delete Current News</h4>
+<form action="/delete-announcement/{{ a.id }}">
+<input class="update-form-submit" type="submit" value="Delete">
+</form>
+
+{% endblock %}

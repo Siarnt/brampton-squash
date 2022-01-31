@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title }} {% endblock %}
+{% block content %}
+<form action="/login" method="POST">
+    <h2>Admin Login</h2>
+    <h4><a href="/">Return Home</a></h4>
+    <div class="login-form">
+        <label for="name">Name</label>
+
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Username">
+        <br>
+    </div>
+
+    <div class="login-form">
+        <label for="password">Password</label>
+
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+        <br>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+<br><br>
+<h4>New Admin</h4>
+<p><a href="/create_admin">New Admin</a></p>
+
+{% endblock %}

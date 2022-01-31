@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block content %}
+<h2>Update League Information</h2>
+<form action="/update-league/{{ l.id }}" method="POST">
+<div class="update-form">
+    <h5>League Number</h5>
+<input class="form-control" type="text" name="update_number" id="update_number" value="{{ l.league_number }}">
+<br>
+<h5>League Name</h5>
+<input class="form-control" type="text" name="update_league_name" id="update_league_name" value="{{ l.league_name }}">
+<br>
+<h5>Contact Name</h5>
+<input class="form-control" type="text" name="update_contact_name" id="update_contact_name" value="{{ l.contact_name }}">
+<br>
+<h5>Contact Email Address</h5>
+<input class="form-control" type="text" name="update_email" id="update_email" value="{{ l.email }}">
+<br>
+<h5>Link To Spreadsheet</h5>
+<input class="form-control" type="text" name="update_link" id="update_link" value="{{ l.link }}">
+
+<input class="update-form-submit" type="submit" value="Update">
+</div>
+</form>
+
+<br>
+<h4>Delete Current League</h4>
+<form action="/delete-league/{{ l.id }}">
+<input class="update-form-submit" type="submit" value="Delete League">
+</form>
+
+{% endblock %}

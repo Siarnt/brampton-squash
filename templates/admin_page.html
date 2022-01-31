@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title }} {% endblock %}
+{% block content %}
+<div class="admin-section">
+    <br>
+<h2>Announcement Items</h2>
+<h4>Add Announcement</h4>
+<form action="/add_announcement_item" method="POST">
+    <div class="login-form">
+        <label for="name">Announcement</label>
+
+        <textarea type="text" class="form-control" id="item" name="item" placeholder="Enter Announcement"></textarea>
+        <br>
+    </div>
+    <div class="login-form">
+        <label for="name">Date Posted</label>
+
+        <input type="text" class="form-control" id="date" name="date" placeholder="Enter Date Posted"></input>
+        <br>
+    </div>
+
+    <div class="login-form">
+        <label for="link">Announcement Rank</label>
+
+        <input type="text" class="form-control" id="rank" name="rank" placeholder="Enter Rank Of Announcement">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+<table class="admin-table">
+    <tr>
+        <th colspan="5">Existing Announcements</th>
+    </tr>
+    <tr>
+        <th>Announcements</th>
+        <th>Date Created</th>
+        <th>Rank</th>
+        <th>Action</th>
+    </tr>
+    {% for announcement in announcement_items %}
+    <tr>
+        <td>{{ announcement.announcement_item }}</td>
+        <td>{{ announcement.date_created }}</td>
+        <td>{{ announcement.rank }}</td>
+        <td><a href="/update-announcement/{{ announcement.id }}">Update</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<hr>
+</div>
+<br>
+
+<div class="admin-section">
+    <br>
+<h2>Squash Leagues</h2>
+<table class="admin-table">
+    <tr>
+        <th colspan="10">Leagues</th>
+    </tr>
+    <tr>
+        <th>League Number</th>
+        <th>League Name</th>
+        <th>Contact Name</th>
+        <th>Contact Email</th>
+        <th>Link To Spreadsheet</th>
+        <th>Action</th>
+    </tr>
+    {% for league in leagues %}
+    <tr>
+        <td>{{ league.league_number }}</td>
+        <td>{{ league.league_name }}</td>
+        <td>{{ league.contact_name }}</td>
+        <td>{{ league.email }}</td>
+        <td>{{ league.link }}</td>
+        <td><a href="/update-league/{{ league.id }}">Update</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<h4>Add New League</h4>
+<form action="/add_league_info" method="POST">
+    <div class="login-form">
+        <label for="name">League Number (1-4)</label>
+        <input type="text" class="form-control" id="league_number" name="league_number" placeholder="League Number (1-4)">
+        <br>
+    </div>
+
+    <div class="login-form">
+        <label for="name">League Name (Day Of Week + Time Of Day)</label>
+        <input type="text" class="form-control" id="league_name" name="league_name" placeholder="League Name">
+        <br>
+    </div>
+
+    <div class="login-form">
+        <label for="name">Contact Name For League (First + Last)</label>
+        <input type="text" class="form-control" id="contact_name" name="contact_name" placeholder="Contact Name">
+        <br>
+    </div>
+
+    <div class="login-form">
+        <label for="name">Email Address For Contact</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Contact Email Address">
+        <br>
+    </div>
+
+    <div class="login-form">
+        <label for="link">Link To Spreadsheet</label>
+        <textarea type="text" class="form-control" id="link" name="link" placeholder="Enter Link To Spreadsheet"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+<hr>    
+</div>
+<br>
+
+<div class="admin-section">
+    <br>
+    <h2>Existing Admin Users</h2>
+
+    <table class="admin-table">
+        <tr>
+            <th>User Names</th>
+            <th>Action</th>
+        </tr>
+        {% for u in all_users %}
+        <tr>
+            <td>{{ u.name }}</td>
+            <td><a href="/delete-admin/{{ u.id }}">Delete Admin User</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>  
+    <hr>  
+</div>
+
+<br>
+<div class="admin-section">
+    <br>
+    <h4>Secret Code To Create An Account: {{ secret_code }}</h4>
+
+</div>
+
+{% endblock %}
+

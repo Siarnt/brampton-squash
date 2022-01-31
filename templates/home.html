@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title }} {% endblock %}
+{% block content %}
+<div class="home-page">
+<h4>Welcome to the Brampton Squash Leagues. New players are always welcome!</h4>
+<hr>
+
+<div class="announcement">
+    <table class="table-announcement">
+        <tr>
+            <th style="padding-left: 15px">Announcements</th>
+        </tr>
+        {% for announcement in announcement_items %}
+        <tr>
+            <td style="padding-left: 5px">{{ announcement.date_created }}</td>
+        </tr>
+        <tr style="border-bottom: 1px solid;">
+            <td style="padding-left: 15px">{{ announcement.announcement_item }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+</div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+{% endblock %}
+

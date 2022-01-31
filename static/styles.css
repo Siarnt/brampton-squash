@@ -1,0 +1,217 @@
+
+* {
+    font-family: sans-serif;
+    color: black;
+    font-size: 19px;
+    height: fit-content;
+}
+body {
+    background-color: lightgray;
+    margin:0;
+    padding:0;
+}
+header {
+    background-color: rgb(111, 153, 216);
+    border-bottom: 1px solid black;
+}
+h5 {
+    text-align: left;
+    padding-left: 3px;
+}
+.main-photo {
+    float: center;
+    max-width: 30%;
+}
+
+
+/* Creating the NAV bar */
+
+#drop-menu a:hover {
+    color: blue;
+}
+.dropdown-menu a:hover  {
+    color: blue;
+}
+.dropdown-menu {
+    background-color: white;
+}
+#drop-menu a {
+    color: black;
+}
+.nav-logo {
+    width: 150px;
+    height: auto;
+}
+
+/* Home Page  */
+
+.home-page {
+    max-width: 90%;
+    height: auto;
+}
+.announcement {
+    align-items: center;
+    float: right;
+    width: 100%;
+    display: block;
+}
+.table-announcement {
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-left: 2px solid;
+    min-width: 40%;
+    max-width: 70%;
+}
+.table-announcement th {
+    font-weight: bold;
+    font-size: 25px;
+    border-bottom: 3px solid;
+    background-color: rgb(111, 153, 216);
+    border-spacing: 1px;
+    padding-left: 2px;
+}
+.table-announcement td {
+    background-color: white;
+    font-size: 20px;
+    padding: 5px;
+    
+}
+
+hr {
+    border-top: 1px solid black;
+    width: 100%;
+    
+}
+
+/* Forms */
+.login-form {
+    text-align: center;
+    width: 80%;
+}
+.update-form {
+    margin:15px 80px;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    width: 100%;
+    height: fit-content;
+    margin-top: 150px;
+    clear: both;
+    background-color: rgb(111, 153, 216);
+    bottom:0;
+    position: relative;
+    border-top: 1px solid black;
+}
+
+/* Admin Table */
+.admin-table {
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-left: 2px solid;
+    width: 50%;
+}
+
+.admin-table th {
+    font-weight: bold;
+    font-size: 25px;
+    border-bottom: 3px solid;
+    background-color: rgb(111, 153, 216);
+    border-spacing: 15px;
+    padding-left: 2px;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-left: 2px solid;
+    text-align: center;
+    padding: 10px;
+}
+
+.admin-table td {
+    background-color: white;
+    font-size: 20px;
+    padding: 8px;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-left: 2px solid;
+    text-align: center;
+    max-width: 5%;
+}
+
+.admin-section {
+    width: 90%;
+}
+
+.scores {
+    width: 86%;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-left: 1px solid;
+}
+
+.footer-table {
+    padding: 8px;
+    text-align: left;
+
+}
+.footer-table td {
+    color: black;
+    text-decoration: none;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+}
+.footer-table td a {
+    color: black;
+}
+#footer-link {
+    text-decoration: underline;
+}
+.footer-table td a:hover {
+    color: blue;
+}
+
+.top-banner-table {
+    text-align: center;
+    width: 100%;
+}
+.bottom-banner-table {
+    text-align: center;
+    border-bottom: 1px solid black;
+    width: 100%;
+    
+}
+.top-header {
+    background-color: tan;
+    border-bottom: 1px solid black;
+}
+.bottom-header {
+    background-color: rgb(111, 153, 216);
+}
+.top-banner-table th {
+    text-align: center;
+    font-size: 30px;
+}
+.bottom-banner-table td {
+    text-align: center;
+    font-size: 20px;
+    padding: 6px;
+}
+
+.topnav { 
+    margin: 0;
+    padding: 0;
+    text-align:center;
+}
+
+.scores-icon {
+    height: 400px;
+    max-width: 90%;
+    border: 2px solid black;
+}
+
