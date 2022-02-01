@@ -17,7 +17,7 @@ def email_alert(subject, body, to):
     msg['subject'] = subject
     msg['to'] = to
 
-    user = "si.bot.a.31@gmail.com"
+    user = "bramptonsquashbot@gmail.com"
     msg['from'] = user
     password = "oxnwzepgmjstxwcb"
 
