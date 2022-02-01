@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title }} {% endblock %}
+{% block content %}
+<div class="scores">
+    <br>
+    {% for league in leagues %}
+    
+    {% if league.league_number == 4 %}
+    <h2>{{ league.league_name }} League - Sign Up To Play</h2>
+    <br>
+        <form action="/1-send_info" method="POST">
+        <div class="login-form">
+            <label for="name">Full Name*</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Full Name">
+            <br>
+        </div>
+    
+        <div class="login-form">
+            <label for="name">Phone Number</label>
+            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter Phone Number">
+            <br>
+        </div>
+    
+        <div class="login-form">
+            <label for="name">Email Address*</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email Address">
+            <br>
+        </div>
+    
+        <div class="login-form">
+            <label for="link">Comments*</label>
+            <textarea rows ="5" type="text" class="form-control" id="comments" name="comments" placeholder="Enter Comments"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <br>
+    <h3>Contact Information</h3>
+    <p>League Organizer: {{ league.contact_name }}</p>
+    <p>League Organizer's Email: {{ league.email }}</p>
+    {% endif %}
+    {% endfor %}
+    <br>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title }} {% endblock %}
+{% block content %}
+<div class="scores">
+    <br>
+    {% for league in leagues %}
+    
+    {% if league.league_number == 2 %}
+    <h2>{{ league.league_name }} League - Submit a Score</h2>
+    <br>  
+    <form action="/1-send_scores" method="POST">
+        <div class="login-form">
+            <label for="name">Player 1 - Name*</label>
+            <input type="text" class="form-control" id="p1_name" name="p1_name" placeholder="Enter Player 1's - Name">
+            <br>
+        </div>
+    
+        <div class="login-form">
+            <label for="name">Player 1 - Score*</label>
+            <input type="text" class="form-control" id="p1_score" name="p1_score" placeholder="Enter Player 1's - Score">
+            <br>
+        </div>
+    
+        <div class="login-form">
+            <label for="name">Player 2 - Name*</label>
+            <input type="text" class="form-control" id="p2_name" name="p2_name" placeholder="Enter Player 2's - Name">
+            <br>
+        </div>
+    
+        <div class="login-form">
+            <label for="name">Player 2 - Score*</label>
+            <input type="text" class="form-control" id="p2_score" name="p2_score" placeholder="Enter Player 2's - Score">
+            <br>
+        </div>
+    
+        <div class="login-form">
+            <label for="name">Your Email Address*</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email Address">
+            <br>
+        </div>
+    
+        <div class="login-form">
+            <label for="link">Comments</label>
+            <textarea rows="3" type="text" class="form-control" id="comments" name="comments" placeholder="Enter Comments"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+
+    {% endif %}
+    {% endfor %}
+    <br>
+    
+</div>
+
+{% endblock %}
+

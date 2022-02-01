@@ -249,6 +249,31 @@ def submit_scores1():
     leagues = League_Information.query.order_by(League_Information.league_number)
     return render_template("1-submit_scores.html",page_title=page_title,user=current_user,leagues=leagues)
 
+@app.route('/2-submit_scores')
+def submit_scores2():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("2-submit_scores.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/3-submit_scores')
+def submit_scores3():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("3-submit_scores.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/4-submit_scores')
+def submit_scores4():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("4-submit_scores.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/5-submit_scores')
+def submit_scores5():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("5-submit_scores.html",page_title=page_title,user=current_user,leagues=leagues)
+
+
 # >>>> STANDINGS AND SCHEDULE PAGES <<<<
 
 @app.route('/1-standings_schedule')
@@ -256,6 +281,30 @@ def standings_schedule1():
     page_title = 'Brampton Squash'
     leagues = League_Information.query.order_by(League_Information.league_number)
     return render_template("1-standings_schedule.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/2-standings_schedule')
+def standings_schedule2():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("2-standings_schedule.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/3-standings_schedule')
+def standings_schedule3():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("3-standings_schedule.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/4-standings_schedule')
+def standings_schedule4():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("4-standings_schedule.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/5-standings_schedule')
+def standings_schedule5():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("5-standings_schedule.html",page_title=page_title,user=current_user,leagues=leagues)
 
 
 # >>>> SIGNUP PAGES <<<<
@@ -266,6 +315,29 @@ def sign_up1():
     leagues = League_Information.query.order_by(League_Information.league_number)
     return render_template("1-sign_up.html",page_title=page_title,user=current_user,leagues=leagues)
 
+@app.route('/2-sign_up')
+def sign_up2():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("2-sign_up.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/3-sign_up')
+def sign_up3():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("3-sign_up.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/4-sign_up')
+def sign_up4():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("4-sign_up.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/5-sign_up')
+def sign_up5():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("5-sign_up.html",page_title=page_title,user=current_user,leagues=leagues)
 
 # >>>> REQUEST INFORMATION PAGES <<<<
 
@@ -274,6 +346,30 @@ def request_info1():
     page_title = 'Brampton Squash'
     leagues = League_Information.query.order_by(League_Information.league_number)
     return render_template("1-request_info.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/2-request_info')
+def request_info2():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("2-request_info.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/3-request_info')
+def request_info3():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("3-request_info.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/4-request_info')
+def request_info4():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("4-request_info.html",page_title=page_title,user=current_user,leagues=leagues)
+
+@app.route('/5-request_info')
+def request_info5():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("5-request_info.html",page_title=page_title,user=current_user,leagues=leagues)
 
 
 # >>>> SENDING SCORES EMAILS <<<<
@@ -313,7 +409,7 @@ def send_scores2():
             body = (f'Player 1 - Name: {p1_name}\nPlayer 1 - Score: {p1_score}\nPlayer 2 - Name: {p2_name}\nPlayer 2 - Score: {p2_score}\nYour Email: {user_email}\nComments: {comments}')
             email_alert(subject,body,to)
             flash('Score submitted successfully!', category='success')
-        return redirect('/2-scores')
+        return redirect('/2-submit_scores')
 
 @app.route('/3-send_scores', methods=['GET','POST'])
 def send_scores3():
@@ -332,7 +428,7 @@ def send_scores3():
             body = (f'Player 1 - Name: {p1_name}\nPlayer 1 - Score: {p1_score}\nPlayer 2 - Name: {p2_name}\nPlayer 2 - Score: {p2_score}\nYour Email: {user_email}\nComments: {comments}')
             email_alert(subject,body,to)
             flash('Score submitted successfully!', category='success')
-        return redirect('/3-scores')
+        return redirect('/3-submit_scores')
 
 @app.route('/4-send_scores', methods=['GET','POST'])
 def send_scores4():
@@ -351,7 +447,26 @@ def send_scores4():
             body = (f'Player 1 - Name: {p1_name}\nPlayer 1 - Score: {p1_score}\nPlayer 2 - Name: {p2_name}\nPlayer 2 - Score: {p2_score}\nYour Email: {user_email}\nComments: {comments}')
             email_alert(subject,body,to)
             flash('Score submitted successfully!', category='success')
-        return redirect('/4-scores')
+        return redirect('/4-submit_scores')
+
+@app.route('/5-send_scores', methods=['GET','POST'])
+def send_scores5():
+    leagues = League_Information.query.filter_by(league_number=5)
+    if request.method == 'POST':
+        p1_name = request.form.get('p1_name')
+        p1_score = request.form.get('p1_score')
+        p2_name = request.form.get('p2_name')
+        p2_score = request.form.get('p2_score')
+        user_email = request.form.get('email')
+        comments = request.form.get('comments')
+
+        for league in leagues:
+            to = league.email
+            subject = (f'{league.league_name} - Score Submission')
+            body = (f'Player 1 - Name: {p1_name}\nPlayer 1 - Score: {p1_score}\nPlayer 2 - Name: {p2_name}\nPlayer 2 - Score: {p2_score}\nYour Email: {user_email}\nComments: {comments}')
+            email_alert(subject,body,to)
+            flash('Score submitted successfully!', category='success')
+        return redirect('/5-submit_scores')
 
 
 # >>>>  SENDING SIGN UP <<<<
@@ -372,6 +487,74 @@ def send_info1():
             flash('Message sent successfully!', category='success')
         return redirect('/1-sign_up')
 
+@app.route('/2-send_info', methods=['GET','POST'])
+def send_info2():
+    leagues = League_Information.query.filter_by(league_number=2)
+    if request.method == 'POST':
+        full_name = request.form.get('name')
+        phone_number = request.form.get('phone_number')
+        email = request.form.get('email')
+        comments = request.form.get('comments')
+
+        for league in leagues:
+            to = league.email
+            subject = (f'{league.league_name} - Sign Up Inquiry')
+            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
+            email_alert(subject,body,to)
+            flash('Message sent successfully!', category='success')
+        return redirect('/2-sign_up')
+
+@app.route('/3-send_info', methods=['GET','POST'])
+def send_info3():
+    leagues = League_Information.query.filter_by(league_number=3)
+    if request.method == 'POST':
+        full_name = request.form.get('name')
+        phone_number = request.form.get('phone_number')
+        email = request.form.get('email')
+        comments = request.form.get('comments')
+
+        for league in leagues:
+            to = league.email
+            subject = (f'{league.league_name} - Sign Up Inquiry')
+            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
+            email_alert(subject,body,to)
+            flash('Message sent successfully!', category='success')
+        return redirect('/3-sign_up')
+
+@app.route('/4-send_info', methods=['GET','POST'])
+def send_info4():
+    leagues = League_Information.query.filter_by(league_number=4)
+    if request.method == 'POST':
+        full_name = request.form.get('name')
+        phone_number = request.form.get('phone_number')
+        email = request.form.get('email')
+        comments = request.form.get('comments')
+
+        for league in leagues:
+            to = league.email
+            subject = (f'{league.league_name} - Sign Up Inquiry')
+            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
+            email_alert(subject,body,to)
+            flash('Message sent successfully!', category='success')
+        return redirect('/4-sign_up')
+
+@app.route('/5-send_info', methods=['GET','POST'])
+def send_info1():
+    leagues = League_Information.query.filter_by(league_number=5)
+    if request.method == 'POST':
+        full_name = request.form.get('name')
+        phone_number = request.form.get('phone_number')
+        email = request.form.get('email')
+        comments = request.form.get('comments')
+
+        for league in leagues:
+            to = league.email
+            subject = (f'{league.league_name} - Sign Up Inquiry')
+            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
+            email_alert(subject,body,to)
+            flash('Message sent successfully!', category='success')
+        return redirect('/5-sign_up')
+
 
 # >>>> SENDING INFORMATION REQUESTS <<<<
 @app.route('/1-send_info_request', methods=['GET','POST'])
@@ -390,6 +573,74 @@ def sent_request_info1():
             email_alert(subject,body,to)
             flash('Message sent successfully!', category='success')
         return redirect('/1-request_info')
+
+@app.route('/2-send_info_request', methods=['GET','POST'])
+def sent_request_info2():
+    leagues = League_Information.query.filter_by(league_number=1)
+    if request.method == 'POST':
+        full_name = request.form.get('name')
+        phone_number = request.form.get('phone_number')
+        email = request.form.get('email')
+        comments = request.form.get('comments')
+
+        for league in leagues:
+            to = league.email
+            subject = (f'{league.league_name} - Information Request')
+            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
+            email_alert(subject,body,to)
+            flash('Message sent successfully!', category='success')
+        return redirect('/2-request_info')
+
+@app.route('/3-send_info_request', methods=['GET','POST'])
+def sent_request_info3():
+    leagues = League_Information.query.filter_by(league_number=1)
+    if request.method == 'POST':
+        full_name = request.form.get('name')
+        phone_number = request.form.get('phone_number')
+        email = request.form.get('email')
+        comments = request.form.get('comments')
+
+        for league in leagues:
+            to = league.email
+            subject = (f'{league.league_name} - Information Request')
+            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
+            email_alert(subject,body,to)
+            flash('Message sent successfully!', category='success')
+        return redirect('/3-request_info')
+
+@app.route('/4-send_info_request', methods=['GET','POST'])
+def sent_request_info4():
+    leagues = League_Information.query.filter_by(league_number=1)
+    if request.method == 'POST':
+        full_name = request.form.get('name')
+        phone_number = request.form.get('phone_number')
+        email = request.form.get('email')
+        comments = request.form.get('comments')
+
+        for league in leagues:
+            to = league.email
+            subject = (f'{league.league_name} - Information Request')
+            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
+            email_alert(subject,body,to)
+            flash('Message sent successfully!', category='success')
+        return redirect('/4-request_info')
+
+@app.route('/5-send_info_request', methods=['GET','POST'])
+def sent_request_info5():
+    leagues = League_Information.query.filter_by(league_number=1)
+    if request.method == 'POST':
+        full_name = request.form.get('name')
+        phone_number = request.form.get('phone_number')
+        email = request.form.get('email')
+        comments = request.form.get('comments')
+
+        for league in leagues:
+            to = league.email
+            subject = (f'{league.league_name} - Information Request')
+            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
+            email_alert(subject,body,to)
+            flash('Message sent successfully!', category='success')
+        return redirect('/5-request_info')
 
 
 # >>>> SETTING UP LOGIN MANAGER <<<<
