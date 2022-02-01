@@ -258,7 +258,7 @@ def standings_schedule1():
     return render_template("1-standings_schedule.html",page_title=page_title,user=current_user,leagues=leagues)
 
 
-# >>>> CONTACT PAGES <<<<
+# >>>> SIGNUP PAGES <<<<
 
 @app.route('/1-sign_up')
 def sign_up1():
@@ -266,6 +266,14 @@ def sign_up1():
     leagues = League_Information.query.order_by(League_Information.league_number)
     return render_template("1-sign_up.html",page_title=page_title,user=current_user,leagues=leagues)
 
+
+# >>>> REQUEST INFORMATION PAGES <<<<
+
+@app.route('/1-request_info')
+def request_info1():
+    page_title = 'Brampton Squash'
+    leagues = League_Information.query.order_by(League_Information.league_number)
+    return render_template("1-request_info.html",page_title=page_title,user=current_user,leagues=leagues)
 
 
 # >>>> SENDING SCORES EMAILS <<<<
@@ -346,7 +354,7 @@ def send_scores4():
         return redirect('/4-scores')
 
 
-# >>>>  SENDING SIGN UP + GENERAL INQUIRIES <<<<
+# >>>>  SENDING SIGN UP <<<<
 @app.route('/1-send_info', methods=['GET','POST'])
 def send_info1():
     leagues = League_Information.query.filter_by(league_number=1)
@@ -363,6 +371,25 @@ def send_info1():
             email_alert(subject,body,to)
             flash('Message sent successfully!', category='success')
         return redirect('/1-sign_up')
+
+
+# >>>> SENDING INFORMATION REQUESTS <<<<
+@app.route('/1-send_info_request', methods=['GET','POST'])
+def sent_request_info1():
+    leagues = League_Information.query.filter_by(league_number=1)
+    if request.method == 'POST':
+        full_name = request.form.get('name')
+        phone_number = request.form.get('phone_number')
+        email = request.form.get('email')
+        comments = request.form.get('comments')
+
+        for league in leagues:
+            to = league.email
+            subject = (f'{league.league_name} - Information Request')
+            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
+            email_alert(subject,body,to)
+            flash('Message sent successfully!', category='success')
+        return redirect('/1-request_info')
 
 
 # >>>> SETTING UP LOGIN MANAGER <<<<
