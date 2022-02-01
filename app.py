@@ -539,7 +539,7 @@ def send_info4():
         return redirect('/4-sign_up')
 
 @app.route('/5-send_info', methods=['GET','POST'])
-def send_info1():
+def send_info5():
     leagues = League_Information.query.filter_by(league_number=5)
     if request.method == 'POST':
         full_name = request.form.get('name')
