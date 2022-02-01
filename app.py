@@ -19,11 +19,11 @@ def email_alert(subject, body, to):
 
     user = "bramptonsquashbot@gmail.com"
     msg['from'] = user
-    password = "oxnwzepgmjstxwcb"
+    email_password = os.getenv("bot_password")
 
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
-    server.login(user, password)
+    server.login(user, email_password)
     server.send_message(msg)
 
     server.quit()
