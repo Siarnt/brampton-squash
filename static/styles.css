@@ -1,3 +1,4 @@
+/* BASIC ELEMENTS */
 
 * {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -22,9 +23,13 @@ h5 {
     float: center;
     max-width: 30%;
 }
+hr {
+    border-top: 1px solid black;
+    width: 100%;   
+}
 
 
-/* Creating the NAV bar */
+/* NAV BAR */
 
 #drop-menu a:hover {
     color: blue;
@@ -45,8 +50,39 @@ h5 {
 #home-label {
     font-weight: bold;
 }
+.top-banner-table {
+    text-align: center;
+    width: 100%;
+}
+.bottom-banner-table {
+    text-align: center;
+    border-bottom: 1px solid black;
+    width: 100%;
+    
+}
+.top-header {
+    background-color: tan;
+    border-bottom: 1px solid black;
+}
+.bottom-header {
+    background-color: rgb(111, 153, 216);
+}
+.top-banner-table th {
+    text-align: center;
+    font-size: 30px;
+}
+.bottom-banner-table td {
+    text-align: center;
+    font-size: 20px;
+    padding: 6px;
+}
+.topnav { 
+    margin: 0;
+    padding: 0;
+    text-align:center;
+}
 
-/* Home Page  */
+/* HOME PAGE  */
 
 .home-page {
     max-width: 90%;
@@ -78,16 +114,11 @@ h5 {
     background-color: white;
     font-size: 20px;
     padding: 5px;
-    
 }
 
-hr {
-    border-top: 1px solid black;
-    width: 100%;
-    
-}
 
-/* Forms */
+/* FORMS */
+
 .login-form {
     text-align: center;
     width: 80%;
@@ -97,7 +128,8 @@ hr {
     text-align: center;
 }
 
-/* Footer */
+/* FOOTER */
+
 .footer {
     width: 100%;
     height: fit-content;
@@ -108,55 +140,6 @@ hr {
     position: relative;
     border-top: 1px solid black;
 }
-
-/* Admin Table */
-.admin-table {
-    border-top: 2px solid;
-    border-bottom: 2px solid;
-    border-right: 2px solid;
-    border-left: 2px solid;
-    width: 50%;
-}
-
-.admin-table th {
-    font-weight: bold;
-    font-size: 25px;
-    border-bottom: 3px solid;
-    background-color: rgb(111, 153, 216);
-    border-spacing: 15px;
-    padding-left: 2px;
-    border-top: 2px solid;
-    border-bottom: 2px solid;
-    border-right: 2px solid;
-    border-left: 2px solid;
-    text-align: center;
-    padding: 10px;
-}
-
-.admin-table td {
-    background-color: white;
-    font-size: 20px;
-    padding: 8px;
-    border-top: 2px solid;
-    border-bottom: 2px solid;
-    border-right: 2px solid;
-    border-left: 2px solid;
-    text-align: center;
-    max-width: 5%;
-}
-
-.admin-section {
-    width: 90%;
-}
-
-.scores {
-    width: 86%;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-    border-left: 1px solid;
-}
-
 .footer-table {
     padding: 8px;
     text-align: left;
@@ -179,39 +162,50 @@ hr {
     color: blue;
 }
 
-.top-banner-table {
-    text-align: center;
-    width: 100%;
+/* ADMIN TABLE */
+
+.admin-table {
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-left: 2px solid;
+    width: 50%;
 }
-.bottom-banner-table {
-    text-align: center;
-    border-bottom: 1px solid black;
-    width: 100%;
-    
-}
-.top-header {
-    background-color: tan;
-    border-bottom: 1px solid black;
-}
-.bottom-header {
+.admin-table th {
+    font-weight: bold;
+    font-size: 25px;
+    border-bottom: 3px solid;
     background-color: rgb(111, 153, 216);
-}
-.top-banner-table th {
+    border-spacing: 15px;
+    padding-left: 2px;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-left: 2px solid;
     text-align: center;
-    font-size: 30px;
+    padding: 10px;
 }
-.bottom-banner-table td {
-    text-align: center;
+.admin-table td {
+    background-color: white;
     font-size: 20px;
-    padding: 6px;
+    padding: 8px;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-left: 2px solid;
+    text-align: center;
+    max-width: 5%;
 }
-
-.topnav { 
-    margin: 0;
-    padding: 0;
-    text-align:center;
+.admin-section {
+    width: 90%;
 }
-
+.scores {
+    width: 86%;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-left: 1px solid;
+}
 .scores-icon {
     height: 400px;
     max-width: 90%;

@@ -38,7 +38,7 @@ ENV = 'prod'
 if ENV == 'dev':
     app.debug = True
     DB_NAME = "database.db"
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'#insert name of the db here
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 else:
     app.debug = False
     data_base_url = os.getenv("database_link")
@@ -52,9 +52,9 @@ app.config['SECRET_KEY'] = the_secret_key
 
 db = SQLAlchemy(app)
 
-# >>>> END OF CONFIGS/APP/DB <<<<
 
 # >>>> CREATING DATABASE MODELS <<<<
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True)
@@ -74,17 +74,17 @@ class League_Information(db.Model):
     email = db.Column(db.String(500))
     link = db.Column(db.String(2000))
 
+# >>>> HOME PAGE <<<<
 
 @app.route('/',methods=['GET','POST'])
 def home():
     page_title = 'Brampton Squash'
     announcement_items = Announcements.query.order_by(Announcements.rank)
     leagues = League_Information.query.order_by(League_Information.league_number)
-
-
     return render_template("home.html",page_title=page_title, user=current_user,announcement_items=announcement_items,leagues=leagues)
 
 # >>>> ADMIN SECTION <<<<
+
 @app.route('/admin_login', methods=['GET','POST'])
 def admin_login():
     page_title = 'Brampton Squash - Admin Login'
@@ -132,7 +132,6 @@ def login():
     if request.method == 'POST':
         name = request.form.get('name')
         password = request.form.get('password')
-
         user = User.query.filter_by(name=name).first()
         if user:
             if check_password_hash(user.password, password):
@@ -152,7 +151,6 @@ def logout():
     logout_user()
     return redirect('/')
 
-
 @app.route('/admin_page', methods=['GET','POST'])
 @login_required
 def admin_page():
@@ -163,6 +161,9 @@ def admin_page():
     secret_code = os.getenv("secret_code")
 
     return render_template("admin_page.html",page_title=page_title, user=current_user,announcement_items=announcement_items,leagues=leagues,all_users=all_users,secret_code=secret_code)
+
+
+# >>>> LEAGUES <<<<
 
 @app.route('/add_league_info', methods=['GET','POST'])
 @login_required
@@ -203,7 +204,7 @@ def update_league(id):
         return render_template("update_league.html",page_title=page_title, l=l,user=current_user)
 
 
-# >>>> announcement <<<<
+# >>>> ANNOUNCEMENTS <<<<
 
 @app.route('/add_announcement_item', methods=['GET','POST'])
 @login_required
@@ -274,39 +275,6 @@ def submit_scores5():
     return render_template("5-submit_scores.html",page_title=page_title,user=current_user,leagues=leagues)
 
 
-# >>>> STANDINGS AND SCHEDULE PAGES <<<<
-
-@app.route('/1-standings_schedule')
-def standings_schedule1():
-    page_title = 'Brampton Squash'
-    leagues = League_Information.query.order_by(League_Information.league_number)
-    return render_template("1-standings_schedule.html",page_title=page_title,user=current_user,leagues=leagues)
-
-@app.route('/2-standings_schedule')
-def standings_schedule2():
-    page_title = 'Brampton Squash'
-    leagues = League_Information.query.order_by(League_Information.league_number)
-    return render_template("2-standings_schedule.html",page_title=page_title,user=current_user,leagues=leagues)
-
-@app.route('/3-standings_schedule')
-def standings_schedule3():
-    page_title = 'Brampton Squash'
-    leagues = League_Information.query.order_by(League_Information.league_number)
-    return render_template("3-standings_schedule.html",page_title=page_title,user=current_user,leagues=leagues)
-
-@app.route('/4-standings_schedule')
-def standings_schedule4():
-    page_title = 'Brampton Squash'
-    leagues = League_Information.query.order_by(League_Information.league_number)
-    return render_template("4-standings_schedule.html",page_title=page_title,user=current_user,leagues=leagues)
-
-@app.route('/5-standings_schedule')
-def standings_schedule5():
-    page_title = 'Brampton Squash'
-    leagues = League_Information.query.order_by(League_Information.league_number)
-    return render_template("5-standings_schedule.html",page_title=page_title,user=current_user,leagues=leagues)
-
-
 # >>>> SIGNUP PAGES <<<<
 
 @app.route('/1-sign_up')
@@ -338,6 +306,7 @@ def sign_up5():
     page_title = 'Brampton Squash'
     leagues = League_Information.query.order_by(League_Information.league_number)
     return render_template("5-sign_up.html",page_title=page_title,user=current_user,leagues=leagues)
+
 
 # >>>> REQUEST INFORMATION PAGES <<<<
 
@@ -373,6 +342,7 @@ def request_info5():
 
 
 # >>>> SENDING SCORES EMAILS <<<<
+
 @app.route('/1-send_scores', methods=['GET','POST'])
 def send_scores1():
     leagues = League_Information.query.filter_by(league_number=1)
@@ -470,6 +440,7 @@ def send_scores5():
 
 
 # >>>>  SENDING SIGN UP <<<<
+
 @app.route('/1-send_info', methods=['GET','POST'])
 def send_info1():
     leagues = League_Information.query.filter_by(league_number=1)
@@ -557,6 +528,7 @@ def send_info5():
 
 
 # >>>> SENDING INFORMATION REQUESTS <<<<
+
 @app.route('/1-send_info_request', methods=['GET','POST'])
 def sent_request_info1():
     leagues = League_Information.query.filter_by(league_number=1)
@@ -644,14 +616,15 @@ def sent_request_info5():
 
 
 # >>>> SETTING UP LOGIN MANAGER <<<<
+
 login_manager = LoginManager()
 login_manager.login_view = 'login'
 login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))
-# >>>> END OF LOGIN MANAGER <<<<
 
 # >>>> ACTUALLY RUNNING THE APP <<<<
+
 if __name__ == '__main__':
     app.run()
