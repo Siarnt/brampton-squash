@@ -548,7 +548,7 @@ def sent_request_info1():
 
 @app.route('/2-send_info_request', methods=['GET','POST'])
 def sent_request_info2():
-    leagues = League_Information.query.filter_by(league_number=1)
+    leagues = League_Information.query.filter_by(league_number=2)
     if request.method == 'POST':
         full_name = request.form.get('name')
         phone_number = request.form.get('phone_number')
@@ -565,7 +565,7 @@ def sent_request_info2():
 
 @app.route('/3-send_info_request', methods=['GET','POST'])
 def sent_request_info3():
-    leagues = League_Information.query.filter_by(league_number=1)
+    leagues = League_Information.query.filter_by(league_number=3)
     if request.method == 'POST':
         full_name = request.form.get('name')
         phone_number = request.form.get('phone_number')
@@ -582,7 +582,7 @@ def sent_request_info3():
 
 @app.route('/4-send_info_request', methods=['GET','POST'])
 def sent_request_info4():
-    leagues = League_Information.query.filter_by(league_number=1)
+    leagues = League_Information.query.filter_by(league_number=4)
     if request.method == 'POST':
         full_name = request.form.get('name')
         phone_number = request.form.get('phone_number')
@@ -599,7 +599,7 @@ def sent_request_info4():
 
 @app.route('/5-send_info_request', methods=['GET','POST'])
 def sent_request_info5():
-    leagues = League_Information.query.filter_by(league_number=1)
+    leagues = League_Information.query.filter_by(league_number=5)
     if request.method == 'POST':
         full_name = request.form.get('name')
         phone_number = request.form.get('phone_number')
