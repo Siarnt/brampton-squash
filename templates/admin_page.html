@@ -50,6 +50,62 @@
 <hr>
 </div>
 <br>
+<div class="admin-section">
+    <br>
+<h2>Resources</h2>
+<h4>Add Resource</h4>
+<form action="/add_resource" method="POST">
+    <div class="login-form">
+        <label for="name">Heading</label>
+
+        <input type="text" class="form-control" id="heading" name="heading" placeholder="Enter Heading"></input>
+        <br>
+    </div>
+    <div class="login-form">
+        <label for="name">Description</label>
+
+        <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter Resource Description"></textarea>
+        <br>
+    </div>
+    <div class="login-form">
+        <label for="name">Link</label>
+
+        <textarea type="text" class="form-control" id="link" name="link" placeholder="Enter Resource Link"></textarea>
+        <br>
+    </div>
+    <div class="login-form">
+        <label for="link">Resource Rank</label>
+
+        <input type="text" class="form-control" id="rank" name="rank" placeholder="Enter Rank Of Resource">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+<table class="admin-table">
+    <tr>
+        <th colspan="5">Existing Resources</th>
+    </tr>
+    <tr>
+        <th>Heading</th>
+        <th>Description</th>
+        <th>Link</th>
+        <th>Rank</th>
+        <th>Action</th>
+    </tr>
+    {% for resource in resources %}
+    <tr>
+        <td>{{ resource.heading }}</td>
+        <td>{{ resource.description }}</td>
+        <td>{{ resource.link }}</td>
+        <td>{{ resource.rank }}</td>
+        <td><a href="/update-resource/{{ resource.id }}">Update</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<hr>
+</div>
+<br>
 
 <div class="admin-section">
     <br>

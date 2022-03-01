@@ -99,8 +99,8 @@ hr {
     border-bottom: 2px solid;
     border-right: 2px solid;
     border-left: 2px solid;
-    min-width: 40%;
-    max-width: 70%;
+    min-width: 50%;
+    max-width: 90%;
 }
 .table-announcement th {
     font-weight: bold;
@@ -116,6 +116,33 @@ hr {
     padding: 5px;
 }
 
+.resources {
+    align-items: center;
+    float: right;
+    width: 100%;
+    display: block;
+}
+.table-resources {
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-left: 2px solid;
+    min-width: 50%;
+    max-width: 90%;
+}
+.table-resources th {
+    font-weight: bold;
+    font-size: 25px;
+    border-bottom: 3px solid;
+    background-color: rgb(111, 153, 216);
+    border-spacing: 1px;
+    padding-left: 2px;
+}
+.table-resources td {
+    background-color: white;
+    font-size: 20px;
+    padding: 5px;
+}
 
 /* FORMS */
 

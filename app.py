@@ -74,6 +74,13 @@ class League_Information(db.Model):
     email = db.Column(db.String(500))
     link = db.Column(db.String(2000))
 
+class Resources(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    heading = db.Column(db.String(1000))
+    description = db.Column(db.String(2000))
+    link = db.Column(db.String(2000))
+    rank = db.Column(db.Integer)
+
 # >>>> HOME PAGE <<<<
 
 @app.route('/',methods=['GET','POST'])
@@ -81,7 +88,8 @@ def home():
     page_title = 'Brampton Squash'
     announcement_items = Announcements.query.order_by(Announcements.rank)
     leagues = League_Information.query.order_by(League_Information.league_number)
-    return render_template("home.html",page_title=page_title, user=current_user,announcement_items=announcement_items,leagues=leagues)
+    resources = Resources.query.order_by(Resources.rank)
+    return render_template("home.html",page_title=page_title, user=current_user,announcement_items=announcement_items,leagues=leagues,resources=resources)
 
 # >>>> ADMIN SECTION <<<<
 
@@ -157,10 +165,11 @@ def admin_page():
     page_title = 'Brampton Squash - Admin Page'
     announcement_items = Announcements.query.order_by(Announcements.rank)
     leagues = League_Information.query.order_by(League_Information.league_number)
+    resources = Resources.query.order_by(Resources.rank)
     all_users = User.query.order_by(User.name)
     secret_code = os.getenv("secret_code")
 
-    return render_template("admin_page.html",page_title=page_title, user=current_user,announcement_items=announcement_items,leagues=leagues,all_users=all_users,secret_code=secret_code)
+    return render_template("admin_page.html",page_title=page_title, user=current_user,announcement_items=announcement_items,leagues=leagues,all_users=all_users,secret_code=secret_code,resources=resources)
 
 
 # >>>> LEAGUES <<<<
@@ -229,7 +238,7 @@ def delete_announcement(id):
 @app.route('/update-announcement/<int:id>', methods=['GET','POST'])
 @login_required
 def update_announcement(id):
-    page_title = "Brampton Squash - Update announcement"
+    page_title = "Brampton Squash - Update Announcement"
     a = Announcements.query.get_or_404(id)
     if request.method == 'POST':
         a.announcement_item = request.form['update_announcement']
@@ -239,6 +248,46 @@ def update_announcement(id):
         return redirect('/admin_page')
     else:
         return render_template("update_announcement.html",page_title=page_title, a=a,user=current_user)
+
+
+# >>>> RESOURCES <<<<
+
+@app.route('/add_resource', methods=['GET','POST'])
+@login_required
+def add_resource():
+    if request.method == 'POST':
+        heading = request.form.get('heading')
+        description = request.form.get('description')
+        link = request.form.get('link')
+        rank = request.form.get('rank')
+        new_resource = Resources(heading=heading,description=description,link=link,rank=rank)
+        db.session.add(new_resource)
+        db.session.commit()
+        return redirect('/admin_page')
+
+@app.route('/delete-resource/<int:id>', methods=['GET','POST'])
+@login_required
+def delete_resource(id):
+    to_delete = Resources.query.get_or_404(id)
+    db.session.delete(to_delete)
+    db.session.commit()
+    return redirect('/admin_page')
+
+@app.route('/update-resource/<int:id>', methods=['GET','POST'])
+@login_required
+def update_resource(id):
+    page_title = "Brampton Squash - Update Resource"
+    r = Resources.query.get_or_404(id)
+    if request.method == 'POST':
+        r.heading = request.form['update_heading']
+        r.description = request.form['update_description']
+        r.link = request.form['update_link']
+        r.rank = request.form['update_rank']
+        db.session.commit()
+        return redirect('/admin_page')
+    else:
+        return render_template("update_resource.html",page_title=page_title, r=r,user=current_user)
+
 
 # >>>> LOADING LEAGUE PAGES <<<<
 

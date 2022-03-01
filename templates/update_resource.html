@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block content %}
+<h2>Update News</h2>
+<form action="/update-resource/{{ r.id }}" method="POST">
+<div class="update-form">
+<h5>Heading</h5>
+<input class="form-control" type="text" name="update_heading" id="update_heading" value="{{ r.heading }}">
+<br>
+<h5>Description</h5>
+<input class="form-control" type="text" name="update_description" id="update_description" value="{{ r.description }}">
+<br>
+<h5>Link</h5>
+<input class="form-control" type="text" name="update_link" id="update_link" value="{{ r.link }}">
+<br>
+<h5>Resource Rank</h5>
+<input class="form-control" type="text" name="update_rank" id="update_rank" value="{{ r.rank }}">
+
+<input class="update-form-submit" type="submit" value="Update">
+</div>
+</form>
+
+<br>
+<h4>Delete Current Resource</h4>
+<form action="/delete-resource/{{ r.id }}">
+<input class="update-form-submit" type="submit" value="Delete">
+</form>
+
+{% endblock %}
