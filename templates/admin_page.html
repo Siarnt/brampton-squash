@@ -3,6 +3,54 @@
 {% block content %}
 <div class="admin-section">
     <br>
+<h2>Quick Links</h2>
+<h4>Add Quick Link</h4>
+<form action="/add_quick_link" method="POST">
+    <div class="login-form">
+        <label for="name">Description</label>
+
+        <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter Resource Description"></textarea>
+        <br>
+    </div>
+    <div class="login-form">
+        <label for="name">Link</label>
+
+        <textarea type="text" class="form-control" id="link" name="link" placeholder="Enter Resource Link"></textarea>
+        <br>
+    </div>
+    <div class="login-form">
+        <label for="link">Quick Link Rank</label>
+
+        <input type="text" class="form-control" id="rank" name="rank" placeholder="Enter Rank Of Quick Link">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+<table class="admin-table">
+    <tr>
+        <th colspan="5">Existing Quick Links</th>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <th>Link</th>
+        <th>Rank</th>
+        <th>Action</th>
+    </tr>
+    {% for quick_link in quick_links %}
+    <tr>
+        <td>{{ quick_link.description }}</td>
+        <td>{{ quick_link.link }}</td>
+        <td>{{ quick_link.rank }}</td>
+        <td><a href="/update-quick_link/{{ quick_link.id }}">Update</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<hr>
+</div>
+<br>
+<div class="admin-section">
+    <br>
 <h2>Announcement Items</h2>
 <h4>Add Announcement</h4>
 <form action="/add_announcement_item" method="POST">

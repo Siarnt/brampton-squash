@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block content %}
+<h2>Update Quick Link</h2>
+<form action="/update-quick_link/{{ q.id }}" method="POST">
+<div class="update-form">
+<h5>Description</h5>
+<input class="form-control" type="text" name="update_description" id="update_description" value="{{ q.description }}">
+<br>
+<h5>Link</h5>
+<input class="form-control" type="text" name="update_link" id="update_link" value="{{ q.link }}">
+<br>
+<h5>Link Rank</h5>
+<input class="form-control" type="text" name="update_rank" id="update_rank" value="{{ q.rank }}">
+
+<input class="update-form-submit" type="submit" value="Update">
+</div>
+</form>
+
+<br>
+<h4>Delete Current Quick Link</h4>
+<form action="/delete-quick_link/{{ q.id }}">
+<input class="update-form-submit" type="submit" value="Delete">
+</form>
+
+{% endblock %}

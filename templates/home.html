@@ -8,6 +8,23 @@
 <div class="announcement">
     <table class="table-announcement">
         <tr>
+            <th style="padding-left: 15px">Quick Links</th>
+        </tr>
+        {% for quick_link in quick_links %}
+        <tr>
+            <td style="padding-left: 5px">{{ quick_link.description }}</a></td>
+        </tr>
+        <tr style="border-bottom: 1px solid;">
+            <td style="padding-left: 15px"><a href="{{ quick_link.link }}" target="blank">Link To Page</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+</div>
+
+<div class="announcement">
+    <table class="table-announcement">
+        <tr>
             <th style="padding-left: 15px">Announcements</th>
         </tr>
         {% for announcement in announcement_items %}

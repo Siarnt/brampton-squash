@@ -81,6 +81,12 @@ class Resources(db.Model):
     link = db.Column(db.String(2000))
     rank = db.Column(db.Integer)
 
+class Quick_Links(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    description = db.Column(db.String(2000))
+    link = db.Column(db.String(2000))
+    rank = db.Column(db.Integer)
+
 # >>>> HOME PAGE <<<<
 
 @app.route('/',methods=['GET','POST'])
@@ -89,7 +95,8 @@ def home():
     announcement_items = Announcements.query.order_by(Announcements.rank)
     leagues = League_Information.query.order_by(League_Information.league_number)
     resources = Resources.query.order_by(Resources.rank)
-    return render_template("home.html",page_title=page_title, user=current_user,announcement_items=announcement_items,leagues=leagues,resources=resources)
+    quick_links = Quick_Links.query.order_by(Quick_Links.rank)
+    return render_template("home.html",page_title=page_title, user=current_user,announcement_items=announcement_items,leagues=leagues,resources=resources,quick_links=quick_links)
 
 # >>>> ADMIN SECTION <<<<
 
@@ -166,10 +173,11 @@ def admin_page():
     announcement_items = Announcements.query.order_by(Announcements.rank)
     leagues = League_Information.query.order_by(League_Information.league_number)
     resources = Resources.query.order_by(Resources.rank)
+    quick_links = Quick_Links.query.order_by(Quick_Links.rank)
     all_users = User.query.order_by(User.name)
     secret_code = os.getenv("secret_code")
 
-    return render_template("admin_page.html",page_title=page_title, user=current_user,announcement_items=announcement_items,leagues=leagues,all_users=all_users,secret_code=secret_code,resources=resources)
+    return render_template("admin_page.html",page_title=page_title, user=current_user,announcement_items=announcement_items,leagues=leagues,all_users=all_users,secret_code=secret_code,resources=resources,quick_links=quick_links)
 
 
 # >>>> LEAGUES <<<<
@@ -287,6 +295,43 @@ def update_resource(id):
         return redirect('/admin_page')
     else:
         return render_template("update_resource.html",page_title=page_title, r=r,user=current_user)
+
+
+# >>>> QUICK LINKS <<<<
+
+@app.route('/add_quick_link', methods=['GET','POST'])
+@login_required
+def add_quick_link():
+    if request.method == 'POST':
+        description = request.form.get('description')
+        link = request.form.get('link')
+        rank = request.form.get('rank')
+        new_quick_link = Quick_Links(description=description,link=link,rank=rank)
+        db.session.add(new_quick_link)
+        db.session.commit()
+        return redirect('/admin_page')
+
+@app.route('/delete-quick_link/<int:id>', methods=['GET','POST'])
+@login_required
+def delete_quick_link(id):
+    to_delete = Quick_Links.query.get_or_404(id)
+    db.session.delete(to_delete)
+    db.session.commit()
+    return redirect('/admin_page')
+
+@app.route('/update-quick_link/<int:id>', methods=['GET','POST'])
+@login_required
+def update_quick_link(id):
+    page_title = "Brampton Squash - Update Quick Link"
+    q = Quick_Links.query.get_or_404(id)
+    if request.method == 'POST':
+        q.description = request.form['update_description']
+        q.link = request.form['update_link']
+        q.rank = request.form['update_rank']
+        db.session.commit()
+        return redirect('/admin_page')
+    else:
+        return render_template("update_quick_link.html",page_title=page_title, q=q,user=current_user)
 
 
 # >>>> LOADING LEAGUE PAGES <<<<
@@ -676,4 +721,4 @@ def load_user(id):
 # >>>> ACTUALLY RUNNING THE APP <<<<
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='192.168.0.20')
