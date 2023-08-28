@@ -33,12 +33,13 @@ def email_alert(subject, body, to):
 app = Flask(__name__)
 load_dotenv()
 
-ENV = 'prod'
+ENV = 'dev'
 
 if ENV == 'dev':
-    app.debug = True
-    DB_NAME = "database.db"
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+        app.debug = True
+        DB_NAME = "database.db"
+        app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+
 else:
     app.debug = False
     data_base_url = os.getenv("database_link")
@@ -91,12 +92,20 @@ class Quick_Links(db.Model):
 
 @app.route('/',methods=['GET','POST'])
 def home():
-    page_title = 'Brampton Squash'
-    announcement_items = Announcements.query.order_by(Announcements.rank)
-    leagues = League_Information.query.order_by(League_Information.league_number)
-    resources = Resources.query.order_by(Resources.rank)
-    quick_links = Quick_Links.query.order_by(Quick_Links.rank)
-    return render_template("home.html",page_title=page_title, user=current_user,announcement_items=announcement_items,leagues=leagues,resources=resources,quick_links=quick_links)
+    try:
+        page_title = 'Brampton Squash'
+        announcement_items = Announcements.query.order_by(Announcements.rank)
+        leagues = League_Information.query.order_by(League_Information.league_number)
+        resources = Resources.query.order_by(Resources.rank)
+        quick_links = Quick_Links.query.order_by(Quick_Links.rank)
+        return render_template("home.html",page_title=page_title, user=current_user,announcement_items=announcement_items,leagues=leagues,resources=resources,quick_links=quick_links)
+    except:
+        redirect('/error')
+
+@app.route('/error',methods=['GET','POST'])
+def error():
+    page_title = 'Brampton Squash - Site Error'
+    return render_template("error.html", page_title=page_title)
 
 # >>>> ADMIN SECTION <<<<
 
@@ -721,4 +730,4 @@ def load_user(id):
 # >>>> ACTUALLY RUNNING THE APP <<<<
 
 if __name__ == '__main__':
-    app.run(host='192.168.0.20')
+    app.run(host='192.168.56.1')

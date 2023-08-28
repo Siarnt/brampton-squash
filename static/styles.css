@@ -7,12 +7,12 @@
     height: fit-content;
 }
 body {
-    background-color: lightgray;
+    background-color: beige;
     margin:0;
     padding:0;
 }
 header {
-    background-color: rgb(111, 153, 216);
+    background-color: rgb(231, 78, 78);
     border-bottom: 1px solid black;
 }
 h5 {
@@ -32,10 +32,11 @@ hr {
 /* NAV BAR */
 
 #drop-menu a:hover {
-    color: blue;
+    color: black;
+    font-weight: bold;
 }
 .dropdown-menu a:hover  {
-    color: blue;
+    color: black;
 }
 .dropdown-menu {
     background-color: white;
@@ -48,7 +49,7 @@ hr {
     height: auto;
 }
 #home-label {
-    font-weight: bold;
+    font-weight: 600;
 }
 .top-banner-table {
     text-align: center;
@@ -61,11 +62,11 @@ hr {
     
 }
 .top-header {
-    background-color: lightgray;
+    background-color: beige;
     border-bottom: 1px solid black;
 }
 .bottom-header {
-    background-color: rgb(111, 153, 216);
+    background-color: rgb(231, 78, 78);
 }
 .top-banner-table th {
     text-align: center;
@@ -93,6 +94,7 @@ hr {
     float: right;
     width: 100%;
     display: block;
+
 }
 .table-announcement {
     border-top: 2px solid;
@@ -101,19 +103,24 @@ hr {
     border-left: 2px solid;
     min-width: 50%;
     max-width: 90%;
+    border-radius: 5px 5px 5px 5px;
 }
 .table-announcement th {
     font-weight: bold;
     font-size: 25px;
     border-bottom: 3px solid;
-    background-color: rgb(111, 153, 216);
+    background-color: rgb(231, 78, 78);
     border-spacing: 1px;
     padding-left: 2px;
+    border-radius: 15px 15px 15px 15px;
+    overflow: hidden;
 }
 .table-announcement td {
     background-color: white;
     font-size: 20px;
     padding: 5px;
+    border-radius: 30px 30px 30px 30px;
+
 }
 
 .resources {
@@ -134,7 +141,7 @@ hr {
     font-weight: bold;
     font-size: 25px;
     border-bottom: 3px solid;
-    background-color: rgb(111, 153, 216);
+    background-color: rgb(231, 78, 78);
     border-spacing: 1px;
     padding-left: 2px;
 }
@@ -162,7 +169,7 @@ hr {
     height: fit-content;
     margin-top: 150px;
     clear: both;
-    background-color: rgb(111, 153, 216);
+    background-color: rgb(231, 78, 78);
     bottom:0;
     position: relative;
     border-top: 1px solid black;
@@ -202,7 +209,7 @@ hr {
     font-weight: bold;
     font-size: 25px;
     border-bottom: 3px solid;
-    background-color: rgb(111, 153, 216);
+    background-color: rgb(231, 78, 78);
     border-spacing: 15px;
     padding-left: 2px;
     border-top: 2px solid;
