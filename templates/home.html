@@ -54,9 +54,11 @@
         <tr>
             <td style="padding-left: 15px">{{ resource.description }}</td>
         </tr>
+        {% if resource.link|length > 1 %}
         <tr style="border-bottom: 1px solid;">
-            <td style="padding-left: 15px"><a href="{{ resource.link }}" target="blank">{{ resource.link }}</a></td>
+            <td style="padding-left: 15px"><a href="{{ resource.link }}" target="blank">Link To Resource</a></td>
         </tr>
+        {% endif %}
         {% endfor %}
     </table>
     <br>
