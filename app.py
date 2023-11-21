@@ -41,7 +41,9 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 else:
     app.debug = False
-    data_base_url = os.getenv("database_link")
+    #data_base_url = os.getenv("database_link")
+    data_url = os.getenv("DATABASE_URL")
+    data_base_url = "postgresql" + data_url[8:]
     app.config['SQLALCHEMY_DATABASE_URI'] = data_base_url
 
 
