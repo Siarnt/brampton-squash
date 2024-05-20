@@ -6,38 +6,32 @@
     {% for league in leagues %}
     
     {% if league.league_number == 1 %}
-    <h2>{{ league.league_name }} - Request Information</h2>
+    <h2>Summer League - Book a Court on Tuesday</h2>
     <br>
         <form action="/1-send_info_request" method="POST">
         <div class="login-form">
-            <label for="name">Full Name*</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Full Name">
-            <br>
-        </div>
-    
-        <div class="login-form">
-            <label for="name">Phone Number</label>
-            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter Phone Number">
+            <label for="name">Name*</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
             <br>
         </div>
     
         <div class="login-form">
             <label for="name">Email Address*</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email Address">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address">
             <br>
         </div>
     
         <div class="login-form">
-            <label for="link">Comments*</label>
-            <textarea rows ="5" type="text" class="form-control" id="comments" name="comments" placeholder="Enter Comments"></textarea>
+            <label for="link">Date & Time*</label>
+            <textarea rows ="5" type="text" class="form-control" id="comments" name="comments" placeholder="Enter the date and time (6pm or 7pm) that you would like to play at Jim Archdekin."></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
     <br>
     <h3>Contact Information</h3>
-    <p>League Organizer: {{ league.contact_name }}</p>
-    <p>League Organizer's Email: {{ league.email }}</p>
+    <p>League Organizer: Trevor</p>
+    <p>League Organizer's Email: tfarndt@rogers.com</p>
     {% endif %}
     {% endfor %}
     <br>

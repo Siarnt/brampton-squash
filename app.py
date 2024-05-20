@@ -627,88 +627,85 @@ def send_info5():
 
 @app.route('/1-send_info_request', methods=['GET','POST'])
 def sent_request_info1():
-    leagues = League_Information.query.filter_by(league_number=1)
     if request.method == 'POST':
         full_name = request.form.get('name')
-        phone_number = request.form.get('phone_number')
         email = request.form.get('email')
         comments = request.form.get('comments')
 
-        for league in leagues:
-            to = league.email
-            subject = (f'{league.league_name} - Information Request')
-            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
-            email_alert(subject,body,to)
-            flash('Message sent successfully!', category='success')
+        to = "tfarndt@rogers.com"
+        subject = (f'Book court for Tuesday')
+        body = (f'Full Name: {full_name}\nEmail: {email}\nComments: {comments}')
+        email_alert(subject,body,to)
+        flash('Message sent successfully!', category='success')
         return redirect('/1-request_info')
 
-@app.route('/2-send_info_request', methods=['GET','POST'])
-def sent_request_info2():
-    leagues = League_Information.query.filter_by(league_number=2)
-    if request.method == 'POST':
-        full_name = request.form.get('name')
-        phone_number = request.form.get('phone_number')
-        email = request.form.get('email')
-        comments = request.form.get('comments')
-
-        for league in leagues:
-            to = league.email
-            subject = (f'{league.league_name} - Information Request')
-            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
-            email_alert(subject,body,to)
-            flash('Message sent successfully!', category='success')
-        return redirect('/2-request_info')
-
-@app.route('/3-send_info_request', methods=['GET','POST'])
-def sent_request_info3():
-    leagues = League_Information.query.filter_by(league_number=3)
-    if request.method == 'POST':
-        full_name = request.form.get('name')
-        phone_number = request.form.get('phone_number')
-        email = request.form.get('email')
-        comments = request.form.get('comments')
-
-        for league in leagues:
-            to = league.email
-            subject = (f'{league.league_name} - Information Request')
-            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
-            email_alert(subject,body,to)
-            flash('Message sent successfully!', category='success')
-        return redirect('/3-request_info')
-
-@app.route('/4-send_info_request', methods=['GET','POST'])
-def sent_request_info4():
-    leagues = League_Information.query.filter_by(league_number=4)
-    if request.method == 'POST':
-        full_name = request.form.get('name')
-        phone_number = request.form.get('phone_number')
-        email = request.form.get('email')
-        comments = request.form.get('comments')
-
-        for league in leagues:
-            to = league.email
-            subject = (f'{league.league_name} - Information Request')
-            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
-            email_alert(subject,body,to)
-            flash('Message sent successfully!', category='success')
-        return redirect('/4-request_info')
-
-@app.route('/5-send_info_request', methods=['GET','POST'])
-def sent_request_info5():
-    leagues = League_Information.query.filter_by(league_number=5)
-    if request.method == 'POST':
-        full_name = request.form.get('name')
-        phone_number = request.form.get('phone_number')
-        email = request.form.get('email')
-        comments = request.form.get('comments')
-
-        for league in leagues:
-            to = league.email
-            subject = (f'{league.league_name} - Information Request')
-            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
-            email_alert(subject,body,to)
-            flash('Message sent successfully!', category='success')
-        return redirect('/5-request_info')
+#@app.route('/2-send_info_request', methods=['GET','POST'])
+#def sent_request_info2():
+#    leagues = League_Information.query.filter_by(league_number=2)
+#    if request.method == 'POST':
+#        full_name = request.form.get('name')
+#        phone_number = request.form.get('phone_number')
+#        email = request.form.get('email')
+#        comments = request.form.get('comments')
+#
+#        for league in leagues:
+#            to = league.email
+#            subject = (f'{league.league_name} - Information Request')
+#            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
+#            email_alert(subject,body,to)
+#            flash('Message sent successfully!', category='success')
+#        return redirect('/2-request_info')
+#
+#@app.route('/3-send_info_request', methods=['GET','POST'])
+#def sent_request_info3():
+#    leagues = League_Information.query.filter_by(league_number=3)
+#    if request.method == 'POST':
+#        full_name = request.form.get('name')
+#        phone_number = request.form.get('phone_number')
+#        email = request.form.get('email')
+#        comments = request.form.get('comments')
+#
+#        for league in leagues:
+#            to = league.email
+#            subject = (f'{league.league_name} - Information Request')
+#            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
+#            email_alert(subject,body,to)
+#            flash('Message sent successfully!', category='success')
+#        return redirect('/3-request_info')
+#
+#@app.route('/4-send_info_request', methods=['GET','POST'])
+#def sent_request_info4():
+#    leagues = League_Information.query.filter_by(league_number=4)
+#    if request.method == 'POST':
+#        full_name = request.form.get('name')
+#        phone_number = request.form.get('phone_number')
+#        email = request.form.get('email')
+#        comments = request.form.get('comments')
+#
+#        for league in leagues:
+#            to = league.email
+#            subject = (f'{league.league_name} - Information Request')
+#            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
+#            email_alert(subject,body,to)
+#            flash('Message sent successfully!', category='success')
+#        return redirect('/4-request_info')
+#
+#@app.route('/5-send_info_request', methods=['GET','POST'])
+#def sent_request_info5():
+#    leagues = League_Information.query.filter_by(league_number=5)
+#    if request.method == 'POST':
+#        full_name = request.form.get('name')
+#        phone_number = request.form.get('phone_number')
+#        email = request.form.get('email')
+#        comments = request.form.get('comments')
+#
+#        for league in leagues:
+#            to = league.email
+#            subject = (f'{league.league_name} - Information Request')
+#            body = (f'Full Name: {full_name}\nPhone Number: {phone_number}\nEmail: {email}\nComments: {comments}')
+#            email_alert(subject,body,to)
+#            flash('Message sent successfully!', category='success')
+#        return redirect('/5-request_info')
 
 
 # >>>> SETTING UP LOGIN MANAGER <<<<
@@ -723,4 +720,4 @@ def load_user(id):
 # >>>> ACTUALLY RUNNING THE APP <<<<
 
 if __name__ == '__main__':
-    app.run(host='192.168.0.20')
+    app.run()
