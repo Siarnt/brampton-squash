@@ -99,8 +99,12 @@ hr {
     border-bottom: 2px solid;
     border-right: 2px solid;
     border-left: 2px solid;
+    /*
     min-width: 50%;
     max-width: 90%;
+    */
+    width: 100%;
+    max-width: 800px;
 }
 .table-announcement th {
     font-weight: bold;
@@ -127,8 +131,8 @@ hr {
     border-bottom: 2px solid;
     border-right: 2px solid;
     border-left: 2px solid;
-    min-width: 50%;
-    max-width: 90%;
+    width: 100%;
+    max-width: 800px;
 }
 .table-resources th {
     font-weight: bold;
