@@ -1,83 +1,49 @@
 {% extends "base.html" %}
-{% block title %}{{ page_title }} {% endblock %}
 {% block content %}
-<div class="home-page">
-<h4>Welcome to the Brampton Squash Leagues. New players are always welcome!</h4>
-<hr>
-
-<div class="announcement">
-    <table class="table-announcement">
-        <tr>
-            <th style="padding-left: 15px">Quick Links</th>
-        </tr>
-        {% for quick_link in quick_links %}
-        <tr>
-            <td style="padding-left: 5px">{{ quick_link.description }}</a></td>
-        </tr>
-        <tr style="border-bottom: 1px solid;">
-            <td style="padding-left: 15px"><a href="{{ quick_link.link }}" target="blank">Link To Page</a></td>
-        </tr>
-        {% endfor %}
-    </table>
-    <hr>
+<div class="intro">
+    <h1>Welcome to the Brampton Squash Leagues.</h1>
+    <p>New players are always welcome!</p>
 </div>
 
-<div class="announcement">
-    <table class="table-announcement">
-        <tr>
-            <th style="padding-left: 15px">Announcements</th>
-        </tr>
-        {% for announcement in announcement_items %}
-        <tr>
-            <td style="padding-left: 5px">{{ announcement.date_created }}</td>
-        </tr>
-        <tr style="border-bottom: 1px solid;">
-            <td style="padding-left: 15px">{{ announcement.announcement_item }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    
-    <!-- adding a photo to the annoucements section with a caption below. CSS classes already made
-    <img class="announcement-photo" src="/static/images/group_photo.jpeg">
-    <p>Brampton players were part of the gold medal winning Masters of Disaster team at the Ontario Regional Masters Team Championships at White Oaks Feb. 20-22. Congratulations to the team!</p>
--->
+{% if quick_links %}
+<section class="panel">
+    <h2 class="panel-title">Quick Links</h2>
+    {% for quick_link in quick_links %}
+    <div class="panel-item item-row">
+        <span class="item-text">{{ quick_link.description }}</span>
+        <a class="pill-link" href="{{ quick_link.link }}" target="_blank" rel="noopener">Link To Page</a>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
 
-    <hr>
-</div>
+{% if announcements %}
+<section class="panel">
+    <h2 class="panel-title">Announcements</h2>
+    {% for announcement in announcements %}
+    <div class="panel-item">
+        {% if announcement.date_created %}<div class="item-meta">{{ announcement.date_created }}</div>{% endif %}
+        <div class="item-text">{{ announcement.announcement_item }}</div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
 
-
-
-
-<div class="resources">
-    <table class="table-resources">
-        <tr>
-            <th style="padding-left: 15px">Resources</th>
-        </tr>
-        {% for resource in resources %}
-        {% if resource.heading|length > 1 %}
-        <tr>
-            <td style="padding-left: 5px"><b>{{ resource.heading }}</b></td>
-        </tr>
+{% if resources %}
+<section class="panel">
+    <h2 class="panel-title">Resources</h2>
+    {% for resource in resources %}
+    {% set link = (resource.link or '').strip() %}
+    <div class="panel-item">
+        {% if resource.heading and resource.heading|length > 1 %}<div class="item-heading">{{ resource.heading }}</div>{% endif %}
+        <div class="item-text">{{ resource.description }}</div>
+        {% if link.lower().startswith('http://') or link.lower().startswith('https://') %}
+        <a class="item-link" href="{{ link }}" target="_blank" rel="noopener">Link To Resource</a>
+        {% elif '@' in link %}
+        <a class="item-link" href="mailto:{{ link }}">{{ link }}</a>
         {% endif %}
-        <tr>
-            <td style="padding-left: 15px">{{ resource.description }}</td>
-        </tr>
-        {% if resource.link|length > 40 %}
-        <tr style="border-bottom: 1px solid;">
-            <td style="padding-left: 15px"><a href="{{ resource.link }}" target="blank">Link To Resource</a></td>
-        </tr>
-        {% else %}
-        <tr style="border-bottom: 1px solid;">
-            <td style="padding-left: 15px"><a href="mailto:{{ resource.link }}" target="blank">{{ resource.link }}</a></td>
-        </tr>
-        {% endif %}
-        {% endfor %}
-    </table>
-    <br>
-</div>
-</div>
-<br><br><br><br><br><br><br><br><br><br><br><br>
-
-
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
 {% endblock %}
-

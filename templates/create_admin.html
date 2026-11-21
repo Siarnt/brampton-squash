@@ -1,34 +1,30 @@
 {% extends "base.html" %}
-{% block title %}{{ page_title }} {% endblock %}
+{% from "_macros.html" import csrf %}
 {% block content %}
-
-<form action="/create_admin" method="POST">
-    <h2> Create Admin</h2>
-    <div class="login-form">
-        <label for="name">Name</label>
-
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Username">
-        <br>
-    </div>
-
-    <div class="login-form">
-        <label for="password">Password</label>
-
-        <input type="password" class="form-control" id="password" name="password1" placeholder="Enter Password">
-        <br>
-    </div>
-    <div class="login-form">
-        <label for="password">Confirm Password</label>
-
-        <input type="password" class="form-control" id="password" name="password2" placeholder="Confirm Password">
-        <br>
-    </div>
-    <div class="login-form">
-        <label for="password">Secret Code</label>
-
-        <input type="password" class="form-control" id="password" name="secret_code" placeholder="Secret Code">
-        <br>
-    </div>
-    <button type="submit" class="btn btn-primary">Create Admin</button>
-</form>
+<div class="form-card">
+    <h1 class="form-title">Create Admin</h1>
+    <form action="{{ url_for('admin.create_admin') }}" method="POST">
+        {{ csrf() }}
+        <div class="field">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Username" value="{{ name }}" maxlength="50" autocomplete="username" required>
+        </div>
+        <div class="field">
+            <label for="password1">Password</label>
+            <input type="password" class="form-control" id="password1" name="password1" placeholder="At least 8 characters" autocomplete="new-password" required>
+        </div>
+        <div class="field">
+            <label for="password2">Confirm Password</label>
+            <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password" autocomplete="new-password" required>
+        </div>
+        <div class="field">
+            <label for="secret_code">Secret Code</label>
+            <input type="password" class="form-control" id="secret_code" name="secret_code" placeholder="Secret Code" autocomplete="off" required>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create Admin</button>
+            <a class="btn btn-light" href="{{ url_for('admin.admin_login') }}">Back to Login</a>
+        </div>
+    </form>
+</div>
 {% endblock %}

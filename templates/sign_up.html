@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from "_macros.html" import csrf, honeypot, text_input %}
+{% block content %}
+<div class="form-card">
+    <h1 class="form-title">{{ league.league_name }} - Sign Up To Play</h1>
+    <form action="{{ url_for('public.sign_up', league_number=league.league_number) }}" method="POST">
+        {{ csrf() }}
+        {{ honeypot() }}
+        {{ text_input('name', 'Full Name', form, 'Enter Your Full Name', required=True) }}
+        {{ text_input('phone_number', 'Phone Number', form, 'Enter Phone Number') }}
+        {{ text_input('email', 'Email Address', form, 'Enter Your Email Address', type='email', required=True) }}
+        <div class="field">
+            <label for="comments">Comments</label>
+            <textarea rows="5" class="form-control" id="comments" name="comments" placeholder="Enter Comments">{{ form.get('comments', '') }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="contact-box">
+        <h2>Contact Information</h2>
+        <p>League Organizer: {{ league.contact_name }}</p>
+        <p>League Organizer's Email: {{ league.email }}</p>
+    </div>
+</div>
+{% endblock %}

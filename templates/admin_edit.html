@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% from "_macros.html" import csrf, admin_field %}
+{% block content %}
+<div class="form-card">
+    <h1 class="form-title">Update {{ section.singular }}</h1>
+    <form action="{{ url_for('admin.edit_item', slug=section.slug, item_id=item.id) }}" method="POST">
+        {{ csrf() }}
+        {% for field in section.fields %}{{ admin_field(field, current.get(field.name)) }}{% endfor %}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a class="btn btn-light" href="{{ url_for('admin.admin_page') }}#{{ section.slug }}">Cancel</a>
+        </div>
+    </form>
+
+    <div class="contact-box">
+        <h2>Delete This {{ section.singular }}</h2>
+        <form action="{{ url_for('admin.delete_item', slug=section.slug, item_id=item.id) }}" method="POST"
+              onsubmit="return confirm('Delete this {{ section.singular|lower }}? This cannot be undone.');">
+            {{ csrf() }}
+            <button type="submit" class="btn btn-outline-danger">Delete</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

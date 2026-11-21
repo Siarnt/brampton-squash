@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% from "_macros.html" import csrf, honeypot, text_input %}
+{% block content %}
+<div class="form-card">
+    <h1 class="form-title">{{ league.league_name }} - Submit a Score</h1>
+    <form action="{{ url_for('public.submit_scores', league_number=league.league_number) }}" method="POST">
+        {{ csrf() }}
+        {{ honeypot() }}
+        {{ text_input('p1_name', 'Player 1 - Name', form, "Enter Player 1's Name", required=True) }}
+        {{ text_input('p1_score', 'Player 1 - Score', form, "Enter Player 1's Score", required=True) }}
+        {{ text_input('p2_name', 'Player 2 - Name', form, "Enter Player 2's Name", required=True) }}
+        {{ text_input('p2_score', 'Player 2 - Score', form, "Enter Player 2's Score", required=True) }}
+        {{ text_input('email', 'Your Email Address', form, 'Enter Your Email Address', type='email', required=True) }}
+        <div class="field">
+            <label for="comments">Comments</label>
+            <textarea rows="3" class="form-control" id="comments" name="comments" placeholder="Enter Comments">{{ form.get('comments', '') }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

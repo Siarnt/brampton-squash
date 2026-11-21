@@ -1,26 +1,26 @@
 {% extends "base.html" %}
-{% block title %}{{ page_title }} {% endblock %}
+{% from "_macros.html" import csrf %}
 {% block content %}
-<form action="/login" method="POST">
-    <h2>Admin Login</h2>
-    <h4><a href="/">Return Home</a></h4>
-    <div class="login-form">
-        <label for="name">Name</label>
-
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Username">
-        <br>
+<div class="form-card">
+    <h1 class="form-title">Admin Login</h1>
+    <form action="{{ url_for('admin.login') }}" method="POST">
+        {{ csrf() }}
+        <div class="field">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Username" autocomplete="username" required>
+        </div>
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" autocomplete="current-password" required>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <a class="btn btn-light" href="{{ url_for('public.home') }}">Return Home</a>
+        </div>
+    </form>
+    <div class="contact-box">
+        <h2>New Admin</h2>
+        <p><a href="{{ url_for('admin.create_admin') }}">Create an admin account</a> (you'll need the secret code)</p>
     </div>
-
-    <div class="login-form">
-        <label for="password">Password</label>
-
-        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
-        <br>
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
-<br><br>
-<h4>New Admin</h4>
-<p><a href="/create_admin">New Admin</a></p>
-
+</div>
 {% endblock %}
